@@ -1,17 +1,22 @@
 import React, { use, useState } from 'react';
 import countrys from '../Country/country';
 import './Countries.css';
-import country from '../Country/country';
+import Country from '../Country/country';
 
 
 
 const Countries = ({countriesPromise}) => {
     const [visitedCountries, setVisitedCountries] = useState([]);
+    const [visitedFlag, setVisitedFlag] = useState([])
     const handleVisitedCountries = (country) => {
         console.log('handle visited countries clicked', country);
         const newVisitedCountries = [...visitedCountries, country];
         setVisitedCountries(newVisitedCountries);
     }
+
+const handleVisitedFlag = (flag) => {
+    const newVisitedFlags = [...visitedFlags, flag]
+}
 
     const countriesData = use(countriesPromise);
     const countries = countriesData.countries;
@@ -27,7 +32,7 @@ const Countries = ({countriesPromise}) => {
             </ol>
             <div className='countries'>
             {
-                countries.map(country => <Countries key={country.cca3.cca3} country= {country} handleVisitedCountries={handleVisitedCountries}></Countries>)
+                countries.map(country => <Countries key={country.cca3.cca3} country= {country} handleVisitedCountries={handleVisitedCountries} handleVisitedFlag={handleVisitedFlag}></Countries>)
             }
         </div>
         </div>
